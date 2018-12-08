@@ -1,0 +1,111 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import numpy as np
+import pandas as pd
+
+
+# In[2]:
+
+
+#read from excel file 
+read = pd.read_csv("/home/bhush/cars.csv")
+read = read.head(20)
+#read.drop(['Unnamed'])
+read
+
+
+# In[3]:
+
+
+#cab_selection = input("search for a cab")
+
+
+# In[4]:
+
+
+#cab selection alc to your choice i have to implement it later part
+selection = int(input("enter your choice"))
+def choice ():
+    print("1:feature wise selection")
+    print("2:rating wise selection")
+    print("3:vehicle type wise selection")
+    print("4:driver rating wise selection")
+choice()
+
+#if (choice==1):
+
+
+# In[16]:
+
+
+#result according to feature and fare having max feature and low fare
+def features_fare():
+    feature_col = read[['featurerating','fare']]
+   
+    #feature = read.sort_values(['featurerating','fare'],ascending=False)  #result for all dataset relese # if required
+    feature = feature_col.sort_values(['featurerating','fare'],ascending=False) # result for feature and fare only
+    #print(num)
+    print(feature)
+features_fare()
+
+
+# In[17]:
+
+
+def Driver_Feature ():
+    fare_col = read[['driverrating', "featurerating", 'fare']]
+    #faress = read.sort_values(['driverrating','featurerating', 'fare'],ascending=False) # for all dataset information
+    faress = fare_col.sort_values(['driverrating','featurerating', 'fare'],ascending=False) # for specific data
+    print(faress)
+Driver_Feature()
+
+
+# 
+
+# In[12]:
+
+
+def locations():
+    location_col = read[['presentloc','driverrating','featurerating', 'fare']]
+    #locationss = location_col.sort_values(['presentloc','driverrating','featurerating','fare'], ascending=False)
+    locationss = location_col.sort_values(['presentloc','driverrating','featurerating','fare'], ascending=False)
+    print(locationss)
+locations()
+
+
+# In[8]:
+
+
+#read = read['vehicletype'].replace(['hatchback : 1', 'sedan: 2', 'xuv :3'], inplace = True) 
+
+
+
+
+
+
+
+# In[14]:
+
+
+def fare_driver():
+    fd_col = read[['fare', 'driverrating']]
+    fd = read.drop(['carname', 'driverid'], axis = 1)
+    fd1 = read.sort_values('fare',ascending=True).sort_values('driverrating',ascending = False)
+    print(fd1)
+fare_driver()
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
